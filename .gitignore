@@ -175,3 +175,6 @@ package
 .env
 
 # End of https://www.toptal.com/developers/gitignore/api/dotenv
+
+# Database files
+*.db
