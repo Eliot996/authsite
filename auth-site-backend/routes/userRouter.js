@@ -9,7 +9,7 @@ router.post("/create", async (req, res) => {
         req.session.userID = userID;
         res.send({ userID: userID });
     } else {
-        res.sendStatus(300);
+        res.sendStatus(400);
     }
 });
 
@@ -20,7 +20,7 @@ router.post("/login", async (req, res) => {
         req.session.userID = userID;
         res.send({ userID: userID });
     } else {
-        res.sendStatus(403);
+        res.sendStatus(401);
     }
 });
 
@@ -28,9 +28,12 @@ router.get("/check", async (req, res) => {
     if (req.session.userID) {
         res.send({ userID: req.session.userID });
     } else {
-        res.status(303).send({ message: "please login"});
+        res.status(401).send({ message: "please login"});
     }
 });
 
+router.get("/logout", async (req, res) => {
+    req.session.destroy(() => res.send({ message: "logged out"}));
+})
 
 export default router;
