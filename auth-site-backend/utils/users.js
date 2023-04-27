@@ -13,8 +13,14 @@ async function create(email, password) {
 }
 
 async function authenticate(email, password) {
-    const result = await connection.get("SELECT * FROM users WHERkE email = ?;", [email]);
-    console.log(result, lastID);
+    const user = await connection.get("SELECT * FROM users WHERE email = ?;", [email]);
+    
+    if (user) {
+        if (bcrypt.compareSync(password, user.password)) 
+            return user.id;
+    }
+
+    return undefined;
 }
 
-export default {create};
+export default {create, authenticate};
