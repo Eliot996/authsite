@@ -25,5 +25,8 @@ app.use(cors({
 import userRouter from "./routes/userRouter.js";
 app.use(userRouter);
 
+import dataRouter from './routes/dataRouter.js';
+app.use(dataRouter);
+
 const PORT = 8080;
 const server = app.listen(PORT, () => console.log("Server is running on", server.address().port));

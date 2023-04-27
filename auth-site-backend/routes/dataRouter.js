@@ -7,3 +7,5 @@ router.get('/data', (req, res) => {
     }
     res.status(401).send({ message: 'Try logging in first!'})
 });
+
+export default router;
