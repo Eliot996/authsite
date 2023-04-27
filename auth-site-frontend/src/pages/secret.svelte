@@ -1,6 +1,5 @@
 <script>
     import { Route } from "svelte-navigator";
-    import { onMount } from 'svelte';
     import SecretGuard from "./secretGuard.svelte";
   
     import { BASE_URL} from '../store/globalsStore.js';
