@@ -33,7 +33,7 @@
 
 <h1>Welcome</h1>
 To AuthSite
-
+{#if !$USER}
 <p>
     Please sign in before continuing
 </p>
@@ -45,3 +45,4 @@ To AuthSite
     </div>
     <button on:click={login}>login</button>
 </div>
+{/if}
