@@ -6,10 +6,17 @@ const saltRounds = Number(process.env.SALT_ROUNDS);
 
 async function create(email, password) {
     const encryptedPassword = bcrypt.hashSync(password, saltRounds);
-    const { lastID } = await connection.run("INSERT INTO users (email, password) VALUES (?, ?);", 
-                                            [email, encryptedPassword]);
 
-    return lastID;
+    try {
+        const { lastID } = await connection.run("INSERT INTO users (email, password) VALUES (?, ?);", 
+        [email, encryptedPassword]);
+        return lastID;
+    } catch (error) {
+        console.log(error)
+    }
+    
+    return undefined;
+
 }
 
 async function authenticate(email, password) {

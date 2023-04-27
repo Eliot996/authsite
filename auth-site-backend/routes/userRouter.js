@@ -9,7 +9,7 @@ router.post("/create", async (req, res) => {
         req.session.userID = userID;
         res.send({ userID: userID });
     } else {
-        res.sendStatus(400);
+        res.status(400).send("Username is likely taken");
     }
 });
 
