@@ -24,5 +24,13 @@ router.post("/login", async (req, res) => {
     }
 });
 
+router.get("/check", async (req, res) => {
+    if (req.session.userID) {
+        res.send({ userID: req.session.userID });
+    } else {
+        res.status(303).send({ message: "please login"});
+    }
+});
+
 
 export default router;
